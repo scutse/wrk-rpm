@@ -1,9 +1,10 @@
 Name: wrk
-Version: 4.1.0
+Version: 4.0.2
 Release: 1%{?dist}
 Summary: a HTTP benchmarking tool
 License: Modified Apache 2.0 License
 URL: https://github.com/wg/wrk/
+
 Source0: https://github.com/wg/wrk/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires: openssl-devel
@@ -22,7 +23,6 @@ BuildRequires: luajit-devel
 %setup -q
 
 %build
-# make WITH_LUAJIT=%{_prefix} WITH_OPENSSL=%{_prefix} VER=%{version}
 make VER=%{version} %{?_smp_flags}
 
 %install
@@ -36,8 +36,6 @@ make VER=%{version} %{?_smp_flags}
 %{_bindir}/wrk
 
 %changelog
-* Sun Feb 11 2018 GetPageSpeed Builder <info@getpagespeed.com> 4.1.0-1
-- 4.1.0
 
 * Sat Apr 01 2017 GetPageSpeed Builder <info@getpagespeed.com> 4.0.2-2
 - new package built with tito
