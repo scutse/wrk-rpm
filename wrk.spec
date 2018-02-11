@@ -22,7 +22,8 @@ BuildRequires: luajit-devel
 %setup -q
 
 %build
-make WITH_LUAJIT=%{_prefix} WITH_OPENSSL=%{_prefix} VER=%{version}
+# make WITH_LUAJIT=%{_prefix} WITH_OPENSSL=%{_prefix} VER=%{version}
+make VER=%{version} %{?_smp_flags}
 
 %install
 %{__rm} -rf %{buildroot}
