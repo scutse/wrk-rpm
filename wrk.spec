@@ -1,11 +1,11 @@
 Name: wrk
 Version: 4.0.2
 Release: 1%{?dist}
-Summary: a HTTP benchmarking tool
+Summary: HTTP benchmarking tool
 License: Modified Apache 2.0 License
-URL: https://github.com/wg/wrk/
+URL: https://github.com/wg/wrk
 
-Source0: https://github.com/wg/wrk/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: openssl-devel
 BuildRequires: luajit-devel
@@ -23,17 +23,15 @@ BuildRequires: luajit-devel
 %setup -q
 
 %build
-make VER=%{version} %{?_smp_flags}
+%make_build VER=%{version}
 
 %install
-%{__rm} -rf %{buildroot}
-%{__mkdir_p} %{buildroot}%{_bindir}
-%{__install} -m0755 %{name} %{buildroot}%{_bindir}
+%{__install} -Dpm0755 -t %{buildroot}%{_bindir} %{name}
 
 %files
-%defattr(-,root,root)
-%doc README CHANGES LICENSE NOTICE SCRIPTING scripts
-%{_bindir}/wrk
+%license LICENSE NOTICE
+%doc README CHANGES SCRIPTING scripts
+%{_bindir}/%{name}
 
 %changelog
 
