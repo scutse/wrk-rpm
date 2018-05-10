@@ -25,7 +25,6 @@ BuildRequires: gcc
 %build
 # EL7 doesn't have this macro: %make_build VER=%{version}
 %{__make} VER=%{version} %{?_smp_mflags} 
-make
 
 %install
 %{__install} -Dpm0755 %{name} %{buildroot}%{_bindir}/%{name}
