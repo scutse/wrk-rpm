@@ -31,6 +31,8 @@ make
 %{__install} -Dpm0755 %{name} %{buildroot}%{_bindir}/%{name}
 
 %files
+# Virtually add license macro for EL6:
+%{!?_licensedir:%global license %%doc}
 %license LICENSE NOTICE
 %doc README.md CHANGES SCRIPTING scripts
 %{_bindir}/%{name}
