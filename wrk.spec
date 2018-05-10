@@ -17,7 +17,7 @@ Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
   several examples are located in %{_docdir}/%{name}-%{version}/scripts/
 
 %prep
-%autosetup
+%setup -q
 
 %build
 %make_build VER=%{version}
