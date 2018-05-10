@@ -7,6 +7,9 @@ URL: https://github.com/wg/wrk
 
 Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires: make
+BuildRequires: gcc
+
 %description
   wrk is a modern HTTP benchmarking tool capable of generating significant
   load when run on a single multi-core CPU. It combines a multithreaded
@@ -20,7 +23,9 @@ Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 %setup -q
 
 %build
-%make_build VER=%{version}
+# EL7 doesn't have this macro: %make_build VER=%{version}
+%{__make} VER=%{version} %{?_smp_mflags} 
+make
 
 %install
 %{__install} -Dpm0755 %{name} %{buildroot}%{_bindir}/%{name}
