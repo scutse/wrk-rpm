@@ -26,7 +26,7 @@ BuildRequires: luajit-devel
 %make_build VER=%{version}
 
 %install
-%{__install} -Dpm0755 -t %{buildroot}%{_bindir} %{name}
+%{__install} -Dpm0755 -t %{buildroot}%{_bindir}/%{name} %{name}
 
 %files
 %license LICENSE NOTICE
