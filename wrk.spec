@@ -10,6 +10,11 @@ Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires: make
 BuildRequires: gcc
 
+%if ( 0%{?fedora} >= 27 )
+%global debug_package %{nil}
+BuildRequires: perl
+%endif
+
 %description
   wrk is a modern HTTP benchmarking tool capable of generating significant
   load when run on a single multi-core CPU. It combines a multithreaded
@@ -37,6 +42,9 @@ BuildRequires: gcc
 %{_bindir}/%{name}
 
 %changelog
+* Sat Oct 27 2018 Anatolii Vorona <vorona.tolik@gmail.com> 4.1.0-1
+- added build requires for Copr Build Service (fedora 27+)
+
 * Thu May 10 2018 GetPageSpeed Builder <info@getpagespeed.com> 4.1.0-1
 - new upstream release 4.1.0
 - removed build requires as they are bundled with source now
