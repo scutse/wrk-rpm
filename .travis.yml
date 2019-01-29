@@ -15,9 +15,8 @@ services:
 install: true
 
 script:
-  
+  - docker run -v ${PWD}:/sources -v ${PWD}:/output:Z ${DOCKER_IMAGE}:${OS_TYPE}-${OS_VERSION}  
   - stat *.rpm
-  - docker run -v ${PWD}:/sources -v ${PWD}:/output:Z ${DOCKER_IMAGE}:${OS_TYPE}-${OS_VERSION}
   # we want to test complete build, so we build final RPM (no -e "SRPM_ONLY=1" switch) + fix build script inside the image (for older bash in EL6)
   # - docker run -v ${PWD}:/sources -v ${PWD}:/output:Z ${DOCKER_IMAGE}:${OS_TYPE}-${OS_VERSION} /bin/bash -c "rm -rf /etc/yum.repos.d/CentOS-Vault.repo; rm -rf /etc/yum.repos.d/CentOS-Sources.repo; sed -i 's/-v OUTPUT_UID/-z "${OUTPUT_UID}"/' /usr/bin/build; /usr/bin/build"
   
