@@ -5,7 +5,7 @@ Summary: HTTP benchmarking tool
 License: Modified Apache 2.0 License
 URL: https://github.com/wg/wrk
 
-Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 
 BuildRequires: make
 BuildRequires: gcc
@@ -42,16 +42,3 @@ BuildRequires: perl
 %{_bindir}/%{name}
 
 %changelog
-* Sat Oct 27 2018 Anatolii Vorona <vorona.tolik@gmail.com> 4.1.0-1
-- added build requires for Copr Build Service (fedora 27+)
-
-* Thu May 10 2018 GetPageSpeed Builder <info@getpagespeed.com> 4.1.0-1
-- new upstream release 4.1.0
-- removed build requires as they are bundled with source now
-
-* Sat Apr 01 2017 GetPageSpeed Builder <info@getpagespeed.com> 4.0.2-2
-- new package built with tito
-
-* Mon Nov  7 2016 IWAI, Masaharu <iwaim.sub@gmail.com> - 4.0.2-1
-- initial release
-
